@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "author": "Maryam Alshaikh",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-mini", "id": "bb1", "top": -145.4, "left": -12, "attrs": {} },
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": -3.25,
+      "left": -6.05,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    { "type": "wokwi-ir-remote", "id": "remote1", "top": -134.4, "left": 220.8, "attrs": {} },
+    { "type": "wokwi-ir-receiver", "id": "ir1", "top": -135.75, "left": -78.58, "attrs": {} },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 51.2,
+      "left": -239.2,
+      "attrs": {}
+    },
+    { "type": "wokwi-neopixel", "id": "rgb1", "top": 15.7, "left": 181.4, "attrs": {} }
+  ],
+  "connections": [
+    [ "ir1:DAT", "pico:GP15", "green", [ "v0" ] ],
+    [ "ir1:GND", "pico:GND.1", "black", [ "v0" ] ],
+    [ "ldr1:AO", "pico:GP26", "green", [ "h0" ] ],
+    [ "ldr1:GND", "pico:GND.3", "black", [ "h48", "v47.6" ] ],
+    [ "ldr1:VCC", "pico:3V3_EN", "red", [ "h48", "v-28.8" ] ],
+    [ "pico:3V3", "bb1:17b.j", "red", [ "h57.91", "v-57.6", "h28.8" ] ],
+    [ "rgb1:VDD", "bb1:17b.i", "red", [ "h-19.2", "v-38.4" ] ],
+    [ "rgb1:DIN", "pico:GP22", "green", [ "h8.8", "v96" ] ],
+    [ "rgb1:VSS", "pico:GND.8", "black", [ "v8.7", "h-116", "v-9.6" ] ],
+    [ "ir1:VCC", "bb1:17b.h", "red", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
